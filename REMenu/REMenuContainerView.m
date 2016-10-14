@@ -35,8 +35,11 @@
     
     CGFloat landscapeOffset = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ? 32.0 : 44.0;
     
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wenum-conversion"
     if (self.navigationBar && !self.appearsBehindNavigationBar) {
         CGRect frame = self.frame;
+        
         frame.origin.y = self.navigationBar.frame.origin.y + (UIDeviceOrientationIsPortrait(orientation) ? 44.0 : landscapeOffset);
         self.frame = frame;
     }
@@ -46,6 +49,7 @@
         frame.origin.y = (UIDeviceOrientationIsPortrait(orientation) ? 44.0 : landscapeOffset) - 44;
         self.frame = frame;
     }
+#pragma clang diagnostic pop
 }
 
 @end
